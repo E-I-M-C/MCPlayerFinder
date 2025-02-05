@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Player Finder | Find by Name</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:wght@300..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/larger.css">
+</head>
+<body>
+    <header>
+        <a class="title-link" href="./index.html">
+            <img src="./images/player_finder_logo.svg" alt="MC Player Finder logo">
+            <h1>MC Player Finder</h1>
+        </a>
+        <nav>
+            <button class="menu"></button>
+            <ul>
+                <li>
+                    <a href="./index.html">Find by Name</a>
+                </li>
+                <li><div class="vl"></div></li>
+                <li>
+                    <a href="./server.html" class="active">Find by Server</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section class="find">
+            <h2>Find Player by Server</h2>
+            <div>
+                <button id="list-button">▼</button>
+                <input id="player-name" type="text" placeholder="e.g. server.elementanimation.com" pattern="[A-Za-z0-9_]{3,16}" required>
+                <button id="search"><img src="./images/magnifying_glass_icon.png" alt="Magnifying glass icon"></button>
+            </div>
+        </section>
+        <hr>
+        <section class="display server">
+            <div>
+                <h2>Unknown</h2>
+                <img src="" alt="Player's skin">
+                <button id="skin">Download Skin</button>
+                <h3>Cape: None</h3>
+                <img src="" alt="Player's cape">
+                <button id="cape">Download Cape</button>
+                <p><b>UUID:</b> <span id="uuid">00000000-0000-0000-0000-000000000000</span></p>
+                <button id="save">Save Player</button>
+            </div>
+        </section>
+        <hr>
+    </main>
+    <footer>
+        <p>&copy;<span id="currentyear"></span> E-I-M-C</p>
+    </footer>
+</body>
+</html>
