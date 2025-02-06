@@ -9,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Rubik:wght@300..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./css/base.css">
     <link rel="stylesheet" href="./css/larger.css">
+    <script type="module" src="./js/main.js"></script>
 </head>
 <body>
     <header>
@@ -18,7 +19,7 @@
         </a>
         <nav>
             <button class="menu"></button>
-            <ul>
+            <ul class="navigation">
                 <li>
                     <a href="./index.html" class="active">Find by Name</a>
                 </li>
@@ -34,23 +35,12 @@
             <h2>Find Player by Name</h2>
             <div>
                 <button id="list-button">▼</button>
-                <input id="player-name" type="text" placeholder="e.g. Grian" pattern="[A-Za-z0-9_]{3,16}" required>
+                <input class="input-text" id="player-name" type="text" placeholder="e.g. Grian" pattern="[A-Za-z0-9_]{3,16}" required>
                 <button id="search"><img src="./images/magnifying_glass_icon.png" alt="Magnifying glass icon"></button>
             </div>
         </section>
         <hr>
-        <section class="display">
-            <div>
-                <h2>Unknown</h2>
-                <img src="" alt="Player's skin">
-                <button id="skin">Download Skin</button>
-                <h3>Cape: None</h3>
-                <img src="" alt="Player's cape">
-                <button id="cape">Download Cape</button>
-                <p><b>UUID:</b> <span id="uuid">00000000-0000-0000-0000-000000000000</span></p>
-                <button id="save">Save Player</button>
-            </div>
-        </section>
+        <section class="display"></section>
         <hr>
     </main>
     <footer>

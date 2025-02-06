@@ -1,4 +1,8 @@
 @media (min-width: 760px) {
+    header {
+        padding: 1.3rem;
+    }
+
     header h1 {
         margin: auto 2rem;
         font-size: 4rem;
@@ -12,7 +16,27 @@
         display: none;
     }
 
-    nav a {
+    .navigation {
+        display: flex;
+        border: 0;
+    }
+
+    .navigation.open {
+        display: flex;
+        position: relative;
+        top: 0;
+        right: 0;
+    }
+
+    .navigation li:first-of-type a {
+        border-radius: 0.5rem 0 0 0.5rem;
+    }
+    
+    .navigation li:last-of-type a {
+        border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    .navigation a {
         display: inline-block;
     }
 
