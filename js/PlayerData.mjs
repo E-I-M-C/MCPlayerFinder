@@ -3,7 +3,7 @@ async function convertToJson(res) {
     if (res.ok) {
         return jsonResponse;
     } else {
-        throw { name: 'servicesError', message: jsonResponse };
+        return jsonResponse;
     }
 }
 
@@ -22,8 +22,9 @@ export async function getImage(url, dataIdentifier, params) {
     }
     const response = await fetch(fullURL);
     if (response.ok) {
+        console.log(response);
         return response.blob();
     } else {
-        return null;
+        throw response;
     }
 }

@@ -35,12 +35,23 @@
             <h2>Find Player by Name</h2>
             <div>
                 <button id="list-button">▼</button>
-                <input class="input-text" id="player-name" type="text" placeholder="e.g. Grian" pattern="[A-Za-z0-9_]{3,16}" required>
+                <input class="input-text" type="text" placeholder="e.g. Grian" pattern="[A-Za-z0-9_]{3,16}" required>
                 <button id="search"><img src="./images/magnifying_glass_icon.png" alt="Magnifying glass icon"></button>
             </div>
         </section>
         <hr>
-        <section class="display"></section>
+        <section class="display">
+            <div>
+                <h2>???</h2>
+                <img src="./images/no_skin.png" alt="Player's skin">
+                <button id="skin">Download Skin</button>
+                <h3>Cape: None</h3>
+                <img src="./images/no_cape.png" alt="Player's cape">
+                <button id="cape">Download Cape</button>
+                <p><b>UUID:</b> <span id="uuid">00000000-0000-0000-0000-000000000000</span></p>
+                <button id="save">Save Player</button>
+            </div>
+        </section>
         <hr>
     </main>
     <footer>

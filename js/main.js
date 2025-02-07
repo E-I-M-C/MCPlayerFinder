@@ -4,17 +4,14 @@ import { displaySinglePlayer, displayMultiplePlayers, displayYear } from "./Disp
 
 menuButton();
 
-const playerNameInput = document.getElementById("player-name");
+const inputElement = document.querySelector(".input-text");
 
 const searchButton = document.getElementById("search");
 searchButton.addEventListener("click", () => {
     const displaySection = document.querySelector(".display");
-    if (displaySection.classList[1] !== "server" && playerNameInput.willValidate) {
-        displaySinglePlayer(displaySection, playerNameInput.value);
-    }
-
-    const displayServerSection = document.querySelector(".display.server");
-    if (displayServerSection !== null) {
+    if (displaySection.classList[1] !== "server" && inputElement.willValidate) {
+        displaySinglePlayer(displaySection, inputElement.value);
+    } else {
         displayMultiplePlayers(displaySection);
     }
 });

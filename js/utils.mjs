@@ -7,3 +7,8 @@ export function menuButton() {
         hamButton.classList.toggle("open");
     });
 }
+
+export function base64toJson(base64text) {
+    const decoded = atob(base64text);
+    return JSON.parse(decoded);
+}
