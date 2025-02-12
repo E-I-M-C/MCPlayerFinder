@@ -58,12 +58,10 @@
     }
 
     .display.server {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
 
     .display div {
-        display: grid;
         grid-template-columns: repeat(2, 1fr);
     }
 

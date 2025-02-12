@@ -1,19 +1,38 @@
-import { menuButton } from "./utils.mjs";
-import { getData, getImage } from "./PlayerData.mjs";
+import { menuButton, getParams } from "./utils.mjs";
 import { displaySinglePlayer, displayMultiplePlayers, displayYear } from "./Display.mjs";
 
 menuButton();
+displayYear();
 
 const inputElement = document.querySelector(".input-text");
-
 const searchButton = document.getElementById("search");
-searchButton.addEventListener("click", () => {
-    const displaySection = document.querySelector(".display");
-    if (displaySection.classList[1] !== "server" && inputElement.willValidate) {
-        displaySinglePlayer(displaySection, inputElement.value);
-    } else {
-        displayMultiplePlayers(displaySection);
+const displaySection = document.querySelector(".display");
+const playerValidate = displaySection.className !== "display server" && inputElement.willValidate;
+const serverValidate = displaySection.className === "display server" && inputElement.willValidate;
+const paramName = getParams("name");
+const paramAddress = getParams("address");
+
+if (paramName !== null && playerValidate) {
+    inputElement.value = paramName;
+    displaySinglePlayer(displaySection, inputElement.value);
+} else if (paramAddress !== null && serverValidate) {
+    inputElement.value = paramAddress;
+    displayMultiplePlayers(displaySection, inputElement.value);
+}
+
+inputElement.addEventListener("keyup", (ev) => {
+    if (ev.key === 'Enter' || ev.keyCode === 13) {
+        if (playerValidate) {
+            displaySinglePlayer(displaySection, inputElement.value);
+        } else if (serverValidate) {
+            displayMultiplePlayers(displaySection, inputElement.value);
+        }
     }
 });
-
-displayYear();
+searchButton.addEventListener("click", () => {
+    if (playerValidate) {
+        displaySinglePlayer(displaySection, inputElement.value);
+    } else if (serverValidate) {
+        displayMultiplePlayers(displaySection, inputElement.value);
+    }
+});
