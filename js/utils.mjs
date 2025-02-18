@@ -25,3 +25,9 @@ export function getParams(param) {
     const urlParams = new URLSearchParams(queryUrlString);
     return urlParams.get(param);
 }
+
+export function setParams(param, value) {
+    const queryUrlString = window.location;
+    const newUrlString = `${queryUrlString.origin+queryUrlString.pathname}?${param}=${value}`;
+    window.history.pushState({}, null, newUrlString);
+}

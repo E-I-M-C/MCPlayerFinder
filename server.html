@@ -31,12 +31,11 @@
         </nav>
     </header>
     <main>
-        <section class="find">
+        <section class="find server">
             <h2>Find Player by Server</h2>
             <div>
-                <button id="list-button">▼</button>
-                <input class="input-text" type="text" placeholder="e.g. server.elementanimation.com" required>
-                <button id="search"><img src="./images/magnifying_glass_icon.png" alt="Magnifying glass icon"></button>
+                <input class="input-text" type="text" pattern="[A-Za-z0-9]" placeholder="e.g. server.elementanimation.com" required>
+                <button id="search"><img src="./images/magnifying_glass_icon.png" alt="Magnifying glass icon" width="30" height="30"></button>
             </div>
         </section>
         <hr>
@@ -44,12 +43,12 @@
             <div>
                 <h2>???</h2>
                 <img src="./images/no_skin.png" alt="Player's skin" width="120" height="270">
-                <button id="skin">Download Skin</button>
+                <button class="skin">Download Skin</button>
                 <h3>Cape: None</h3>
                 <img src="./images/no_cape.png" alt="Player's cape" width="113" height="180">
-                <button id="cape">Download Cape</button>
-                <p><b>UUID:</b> <span id="uuid">00000000-0000-0000-0000-000000000000</span></p>
-                <button id="save">Save Player</button>
+                <button class="cape">Download Cape</button>
+                <p><b>UUID:</b> <span class="uuid">00000000-0000-0000-0000-000000000000</span></p>
+                <button class="save">Save Player</button>
             </div>
         </section>
         <hr>
