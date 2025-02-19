@@ -34,15 +34,17 @@
         <section class="find">
             <h2>Find Player by Name</h2>
             <div>
-                <button id="list-button">▼</button>
-                <ul id="player-list" class="closed"></ul>
+                <div id="pl-container">
+                    <button id="list-button">▼</button>
+                    <ul id="player-list"></ul>
+                </div>
                 <input class="input-text" type="text" placeholder="e.g. Grian" pattern="[A-Za-z0-9_]{3,16}" required>
                 <button id="search"><img src="./images/magnifying_glass_icon.png" alt="Magnifying glass icon" width="30" height="30"></button>
             </div>
         </section>
         <hr>
         <section class="display">
-            <div>
+            <div class="player-info">
                 <h2>???</h2>
                 <img src="./images/no_skin.png" alt="Player's skin" width="120" height="270">
                 <button class="skin">Download Skin</button>

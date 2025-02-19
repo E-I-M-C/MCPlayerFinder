@@ -34,13 +34,13 @@
         <section class="find server">
             <h2>Find Player by Server</h2>
             <div>
-                <input class="input-text" type="text" pattern="[A-Za-z0-9]" placeholder="e.g. server.elementanimation.com" required>
+                <input class="input-text" type="text" pattern="[A-Za-z0-9\-\.]{5,}" placeholder="e.g. server.elementanimation.com" required>
                 <button id="search"><img src="./images/magnifying_glass_icon.png" alt="Magnifying glass icon" width="30" height="30"></button>
             </div>
         </section>
         <hr>
         <section class="display server">
-            <div>
+            <div class="player-info">
                 <h2>???</h2>
                 <img src="./images/no_skin.png" alt="Player's skin" width="120" height="270">
                 <button class="skin">Download Skin</button>

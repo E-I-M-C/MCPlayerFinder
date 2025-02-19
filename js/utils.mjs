@@ -2,7 +2,6 @@
 export function menuButton() {
     const hamButton = document.querySelector(".menu");
     const navigation = document.querySelector(".navigation");
-
     hamButton.addEventListener("click", () => {
         navigation.classList.toggle("open");
         hamButton.classList.toggle("open");
@@ -30,4 +29,20 @@ export function setParams(param, value) {
     const queryUrlString = window.location;
     const newUrlString = `${queryUrlString.origin+queryUrlString.pathname}?${param}=${value}`;
     window.history.pushState({}, null, newUrlString);
+}
+
+export function alertMessage(message) {
+    const alert = document.createElement("p");
+    alert.className = "alert";
+    alert.innerHTML = `${message}<span>✖</span>`;
+    alert.addEventListener("click", (ev) => {
+        if (ev.target.tagName === 'SPAN') displaySection.removeChild(alert);
+    });
+    const displaySection = document.querySelector(".display");
+    displaySection.prepend(alert);
+}
+
+export function removeAllAlerts() {
+    const alerts = document.querySelectorAll(".alert");
+    alerts.forEach((alert) => document.querySelector(".display").removeChild(alert));
 }

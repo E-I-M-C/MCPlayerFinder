@@ -1,5 +1,5 @@
 import { getData, getImage } from "./PlayerData.mjs";
-import { setLocalStorage, getLocalStorage } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs";
 
 // Create HTML code from obtained player data
 async function playerInfoTemplate(data) {
@@ -34,6 +34,7 @@ async function playerInfoTemplate(data) {
         <p><b>UUID:</b> <span class="uuid">${id}</span></p>
         <button class="save">Save Player</button>`;
     addEventListeners2Elements(div, username, id);
+    div.classList.add("player-info");
     // Return HTML code
     return div;
 }
@@ -81,7 +82,8 @@ export async function displaySinglePlayer(parentElement, name) {
         parentElement.innerHTML = "";
         parentElement.appendChild(await playerInfoTemplate(playerData.data));
     } else {
-        console.log("Username not found");
+        removeAllAlerts();
+        alertMessage("Username not found");
     }
 }
 
@@ -98,11 +100,16 @@ export async function displayMultiplePlayers(parentElement, value) {
                 parentElement.appendChild(await playerInfoTemplate(playerData.data));
             }
         });
+    } else if (serverData.debug.ping) {
+        removeAllAlerts();
+        alertMessage("Cannot retrieve players from server");
     } else {
-        console.log("Cannot retrieve players from server");
+        removeAllAlerts();
+        alertMessage("Server is invalid or offline");
     }
 }
 
+// Add event listeners to buttons
 function addEventListeners2Elements(parentElement, playerName, uuid) {
     const skinDownload = parentElement.querySelector(".skin");
     const capeDownload = parentElement.querySelector(".cape");
@@ -143,6 +150,7 @@ function addEventListeners2Elements(parentElement, playerName, uuid) {
     });
 }
 
+// Add hidden link to download buttons and click it
 function addHiddenLink(parentElement, url, downloadText) {
     const a = document.createElement("a");
     parentElement.appendChild(a);
@@ -154,6 +162,7 @@ function addHiddenLink(parentElement, url, downloadText) {
     window.URL.revokeObjectURL(url);
 }
 
+// Render saved player list
 export function displayPlayerList() {
     const parentElement = document.getElementById("player-list");
     parentElement.innerHTML = "";
@@ -162,7 +171,7 @@ export function displayPlayerList() {
         parentElement.innerHTML = "";
         playerList.forEach((player) => {
             const li = document.createElement("li");
-            li.innerHTML = `<img src="${player.previewSite}" alt="${player.name}" width="32" hight="32"><span>${player.name}</span><span class="remove-player">✖</span>`;
+            li.innerHTML = `<img src="${player.previewSite}" alt="${player.name}" width="32" hight="32"><span class="player-name">${player.name}</span><span class="remove-player">✖</span>`;
             parentElement.appendChild(li);
             li.addEventListener("click", () => {
                 document.querySelector(".input-text").value = li.querySelector("span").textContent;
@@ -171,10 +180,11 @@ export function displayPlayerList() {
             addRemoveEventListener(li);
         });
     } else {
-        parentElement.innerHTML = "<li>No saved players found</li>";
+        parentElement.innerHTML = "<li><span>No saved players</span></li>";
     }
 }
 
+// Add a remove event listener to entries in the rendered player list
 function addRemoveEventListener(parentElement) {
     parentElement.querySelector(".remove-player").addEventListener("click", (ev) => {
         ev.stopImmediatePropagation();
