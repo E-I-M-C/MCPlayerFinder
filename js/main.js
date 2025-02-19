@@ -46,12 +46,18 @@ function displayValidated() {
     } else if (serverValidate) {
         setParams("address", inputElement.value);
         displayMultiplePlayers(displaySection, inputElement.value);
+    } else if (displaySection.className !== "display server" && inputElement.value.length < 3) {
+        removeAllAlerts();
+        alertMessage("Username must contain at least 3 characters");
     } else if (displaySection.className !== "display server") {
         removeAllAlerts();
-        alertMessage("Invalid username");
+        alertMessage("Username has invalid character(s)");
+    } else if (displaySection.className === "display server" && inputElement.value.length < 5) {
+        removeAllAlerts();
+        alertMessage("Server address must contain at least 5 characters");
     } else if (displaySection.className === "display server") {
         removeAllAlerts();
-        alertMessage("Server address must at least contain 5 characters");
+        alertMessage("Server address has invalid character(s)");
     }
 }
 // If URL parameters are set fill the text input and click the search button

@@ -163,6 +163,7 @@ function addHiddenLink(parentElement, url, downloadText) {
     a.download = downloadText;
     a.click();
     window.URL.revokeObjectURL(url);
+    parentElement.removeChild(a);
 }
 
 // Render saved player list
