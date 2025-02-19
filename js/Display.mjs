@@ -116,22 +116,26 @@ function addEventListeners2Elements(parentElement, playerName, uuid) {
     const savePlayer = parentElement.querySelector(".save");
     skinDownload.addEventListener("click", async (ev) => {
         ev.stopImmediatePropagation();
-        const skinURL = window.URL.createObjectURL(await getImage("https://crafatar.com/skins/", uuid));
-        addHiddenLink(skinDownload, skinURL, `${playerName}.png`);
+        if (ev.target.tagName !== 'A') {
+            const skinURL = window.URL.createObjectURL(await getImage("https://crafatar.com/skins/", uuid));
+            addHiddenLink(skinDownload, skinURL, `${playerName}.png`);
+        }
     });
     capeDownload.addEventListener("click", async (ev) => {
         ev.stopImmediatePropagation();
-        const capeURL = window.URL.createObjectURL(await getImage("https://crafatar.com/capes/", uuid));
-        addHiddenLink(capeDownload, capeURL, "cape.png");
+        if (ev.target.tagName !== 'A') {
+            const capeURL = window.URL.createObjectURL(await getImage("https://crafatar.com/capes/", uuid));
+            addHiddenLink(capeDownload, capeURL, "cape.png");
+        }
     });
     savePlayer.addEventListener("click", (ev) => {
         ev.stopImmediatePropagation();
         const players = getLocalStorage("players") || [];
         let playerExists = false;
+        // Test to see if player has already been saved
         if (players.length > 0) players.forEach((player) => {
             if (player.name === playerName) playerExists = true;
         });
-
         if (!playerExists) {
             players.push({
                 name: playerName,
@@ -157,7 +161,6 @@ function addHiddenLink(parentElement, url, downloadText) {
     a.style = "display: none";
     a.href = url;
     a.download = downloadText;
-    a.addEventListener("click", () => {ev.stopImmediatePropagation()});
     a.click();
     window.URL.revokeObjectURL(url);
 }
