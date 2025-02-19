@@ -171,7 +171,7 @@ nav a:hover {
     padding: 0;
     position: absolute;
     top: 2rem;
-    left: 1rem;
+    left: -10px;
     border: 1px solid #000;
     border-radius: 1rem;
     overflow: hidden;
@@ -185,8 +185,8 @@ nav a:hover {
 
 #player-list li {
     display: flex;
-    padding: 1rem;
-    font-size: 2rem;
+    padding: 0.7rem;
+    font-size: 1.8rem;
     color: #000;
     background-color: #fff;
     cursor: pointer;
@@ -204,12 +204,13 @@ nav a:hover {
 }
 
 #player-list li img {
-    width: 42px;
-    height: 42px;
+    margin: auto 0;
 }
 
 #player-list .remove-player {
     margin: 0 0 0 auto;
+    font-size: 1.5rem;
+    text-align: center;
 }
 
 .input-text {
@@ -287,6 +288,8 @@ hr {
 }
 
 .display .player-info h2 {
+    margin: auto;
+    display: inline-block;
     font-size: 2rem;
 }
 
