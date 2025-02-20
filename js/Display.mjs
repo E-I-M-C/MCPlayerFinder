@@ -1,5 +1,5 @@
 import { getData, getImage } from "./PlayerData.mjs";
-import { setLocalStorage, getLocalStorage, alertMessage, removeAllAlerts } from "./utils.mjs";
+import { setLocalStorage, getLocalStorage, alertMessage, removeAllAlerts, removeParams } from "./utils.mjs";
 
 // Create HTML code from obtained player data
 async function playerInfoTemplate(data) {
@@ -55,10 +55,18 @@ async function capeBlob2Name(blob) {
         return "MineCon 2016";
     } else if (firstByte === 80 && secondByte === 239 && thirdByte === 85) {
         return "Migrator";
+    } else if (firstByte === 87 && secondByte === 12 && thirdByte === 170) {
+        return "Vanilla";
     } else if (firstByte === 111 && secondByte === 229 && thirdByte === 255) {
         return "Cherry Blossom";
     } else if (firstByte === 160 && secondByte === 0 && thirdByte === 102) {
         return "15th Anniversary";
+    } else if (firstByte === 255 && secondByte === 64 && thirdByte === 188) {
+        return "MCC 15th Year";
+    } else if (firstByte === 64 && secondByte === 114 && thirdByte === 213) {
+        return "Minecraft Experience";
+    } else if (firstByte === 202 && secondByte === 170 && thirdByte === 168) {
+        return "Mojang Office";
     } else {
         return "None";
     }
@@ -84,6 +92,7 @@ export async function displaySinglePlayer(parentElement, name) {
         parentElement.appendChild(await playerInfoTemplate(playerData.data));
     } else {
         removeAllAlerts();
+        removeParams();
         alertMessage("Username not found");
     }
     parentElement.querySelector(".player-info").classList.remove("close");
@@ -108,10 +117,12 @@ export async function displayMultiplePlayers(parentElement, value) {
         alertMessage("Cannot retrieve players from server");
     } else {
         removeAllAlerts();
+        removeParams();
         alertMessage("Server is invalid or offline");
     }
     for (const element of parentElement.getElementsByClassName("player-info")) {
         element.classList.remove("close");
+        element.classList.add("open");
     }
 }
 

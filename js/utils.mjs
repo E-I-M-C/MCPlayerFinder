@@ -31,6 +31,11 @@ export function setParams(param, value) {
     window.history.pushState({}, null, newUrlString);
 }
 
+export function removeParams() {
+    const queryUrlString = window.location;
+    window.history.pushState({}, null, queryUrlString.origin);
+}
+
 export function alertMessage(message) {
     const alert = document.createElement("p");
     alert.className = "alert";
