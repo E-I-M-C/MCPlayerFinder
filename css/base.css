@@ -293,7 +293,7 @@ hr {
 }
 
 .player-info.close {
-    animation: close 1.2s ease-in-out;
+    animation: close 3s ease-in-out;
 }
 
 .player-info h2 {
@@ -375,10 +375,10 @@ footer {
     0% {
         transform: translate(0, 0) scale(1, 1);
     }
-    25% {
+    10% {
         transform: translate(0, -50%) scale(1, 0);
     }
-    75% {
+    90% {
         transform: translate(0, -50%) scale(1, 0);
     }
     100% {
