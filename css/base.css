@@ -300,29 +300,49 @@ hr {
 .display .player-info img {
     display: block;
     margin: auto;
+    border-radius: 0.5rem;
 }
 
 .display .player-info button {
     margin: auto;
     padding: 0.5rem;
-    color: white;
+    color: #fff;
     background-color: var(--highlight-color);
     border: 0;
     border-radius: 1rem;
     font-size: 1rem;
     cursor: pointer;
-}
-
-.display .player-info p {
-    color: white;
-    text-align: center;
-    font-size: 1rem;
+    transition: all 0.3s ease-in-out;
 }
 
 .display .player-info button.save {
     padding: 1rem;
     font-size: 1.5rem;
     border-radius: 2.5rem;
+}
+
+.display .player-info button:hover {
+    color: var(--highlight-color);
+    background-color: #fff;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.display .player-info p {
+    color: #fff;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.uuid {
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.uuid:hover {
+    color: var(--highlight-color);
+    transition: all 0.3s ease-in-out;
 }
 
 footer {

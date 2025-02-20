@@ -76,7 +76,7 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .display.server .player-info:last-of-type:nth-last-of-type(odd) {
+    .display.server .player-info:nth-of-type(odd):last-child {
         width: 50%;
         grid-column: 1/3;
     }

@@ -8,18 +8,8 @@ async function playerInfoTemplate(data) {
     const playerImageURL = "https://crafatar.com/renders/body/";
     const playerImageParams = "?overlay";
     const playerCapeURL = "https://crafthead.net/cape/";
-    let playerSkinBlob = null;
-    let playerCapeBlob = null;
-    // Try to get player's skin
-    try {
-        playerSkinBlob = await getImage(playerImageURL, id, playerImageParams);
-    } catch (err) {
-        playerSkinBlob = null;
-    }
-    // Try to get player's cape
-    try {
-        playerCapeBlob = await getImage(playerCapeURL, username);
-    } catch (err) {}
+    const playerSkinBlob = await getImage(playerImageURL, id, playerImageParams);
+    const playerCapeBlob = await getImage(playerCapeURL, username);
     let capeText = "None";
     // Call capeBlob2Name funtion to set "capeText" value
     if (playerCapeBlob !== null) {
@@ -34,9 +24,19 @@ async function playerInfoTemplate(data) {
         <p><b>UUID:</b> <span class="uuid">${id}</span></p>
         <button class="save">Save Player</button>`;
     addEventListeners2Elements(div, username, id);
+    addCopyText(div.querySelector(".uuid"), div.querySelector(".uuid").textContent);
     div.classList.add("player-info");
     // Return HTML code
     return div;
+}
+
+function addCopyText(element, value) {
+    element.addEventListener("click", () => {
+        // Copy element's text
+        navigator.clipboard.writeText(value);
+        // Alert the copied text
+        alert("Copied UUID: "+value);
+    });
 }
 
 // Return corresponding string from blob
@@ -79,6 +79,7 @@ function blob2URL(blob, type) {
 export async function displaySinglePlayer(parentElement, name) {
     const playerData = await getData("https://playerdb.co/api/player/minecraft/", name);
     if (playerData.code === "player.found") {
+        document.querySelector("link[rel~='icon']").href = `https://crafatar.com/avatars/${playerData.data.player.id}?overlay&size=32`;
         parentElement.innerHTML = "";
         parentElement.appendChild(await playerInfoTemplate(playerData.data));
     } else {
@@ -90,6 +91,7 @@ export async function displaySinglePlayer(parentElement, name) {
 // Adds mutiple players' info on page
 export async function displayMultiplePlayers(parentElement, value) {
     const serverData = await getData("https://api.mcsrvstat.us/3/", value);
+    document.querySelector("link[rel~='icon']").href = serverData.icon;
     // Test to see if names were obtained
     if (serverData.debug.query) {
         parentElement.innerHTML = "";

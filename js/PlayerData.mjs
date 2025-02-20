@@ -27,6 +27,6 @@ export async function getImage(url, dataIdentifier, params) {
     if (response.ok) {
         return response.blob();
     } else {
-        throw response;
+        return null;
     }
 }
