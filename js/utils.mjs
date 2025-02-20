@@ -32,8 +32,7 @@ export function setParams(param, value) {
 }
 
 export function removeParams() {
-    const queryUrlString = window.location;
-    window.history.pushState({}, null, queryUrlString.origin);
+    window.history.back();
 }
 
 export function alertMessage(message) {
