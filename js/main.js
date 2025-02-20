@@ -40,12 +40,24 @@ inputElement.addEventListener("keydown", (ev) => {
 function displayValidated() {
     const playerValidate = displaySection.className !== "display server" && inputElement.validity.valid;
     const serverValidate = displaySection.className === "display server" && inputElement.validity.valid;
-    if (playerValidate) {
+    if (playerValidate && !serverValidate) {
         setParams("name", inputElement.value);
-        displaySinglePlayer(displaySection, inputElement.value);
-    } else if (serverValidate) {
+        const playerElement = document.querySelector(".player-info");
+        playerElement.classList.add("close");
+        playerElement.classList.remove("open");
+        setTimeout(()=>{
+            displaySinglePlayer(displaySection, inputElement.value);
+        },300);
+    } else if (serverValidate && !playerValidate) {
         setParams("address", inputElement.value);
-        displayMultiplePlayers(displaySection, inputElement.value);
+        const playerElements = document.getElementsByClassName("player-info");
+        for (const element of playerElements) {
+            element.classList.add("close");
+            element.classList.remove("open");
+        }
+        setTimeout(()=>{
+            displayMultiplePlayers(displaySection, inputElement.value);
+        },300);
     } else if (displaySection.className !== "display server" && inputElement.value.length < 3) {
         removeAllAlerts();
         alertMessage("Username must contain at least 3 characters");

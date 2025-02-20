@@ -25,7 +25,7 @@ async function playerInfoTemplate(data) {
         <button class="save">Save Player</button>`;
     addEventListeners2Elements(div, username, id);
     addCopyText(div.querySelector(".uuid"), div.querySelector(".uuid").textContent);
-    div.classList.add("player-info");
+    div.className = "player-info open";
     // Return HTML code
     return div;
 }
@@ -86,6 +86,7 @@ export async function displaySinglePlayer(parentElement, name) {
         removeAllAlerts();
         alertMessage("Username not found");
     }
+    parentElement.querySelector(".player-info").classList.remove("close");
 }
 
 // Adds mutiple players' info on page
@@ -108,6 +109,9 @@ export async function displayMultiplePlayers(parentElement, value) {
     } else {
         removeAllAlerts();
         alertMessage("Server is invalid or offline");
+    }
+    for (const element of parentElement.getElementsByClassName("player-info")) {
+        element.classList.remove("close");
     }
 }
 

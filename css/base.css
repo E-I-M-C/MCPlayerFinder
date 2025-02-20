@@ -254,6 +254,7 @@ hr {
 
 .display {
     display: grid;
+    min-height: 600px;
     gap: 1rem;
     padding: 2rem 1rem;
 }
@@ -275,7 +276,7 @@ hr {
     cursor: pointer;
 }
 
-.display .player-info {
+.player-info {
     display: grid;
     row-gap: 1rem;
     margin: auto;
@@ -287,23 +288,31 @@ hr {
     border-radius: 1rem;
 }
 
-.display .player-info h2 {
+.player-info.open {
+    animation: menuOpen 0.3s ease-in-out;
+}
+
+.player-info.close {
+    animation: close 0.9s ease-in-out;
+}
+
+.player-info h2 {
     margin: auto;
     display: inline-block;
     font-size: 2rem;
 }
 
-.display .player-info h3 {
+.player-info h3 {
     font-size: 1.5rem;
 }
 
-.display .player-info img {
+.player-info img {
     display: block;
     margin: auto;
     border-radius: 0.5rem;
 }
 
-.display .player-info button {
+.player-info button {
     margin: auto;
     padding: 0.5rem;
     color: #fff;
@@ -315,20 +324,20 @@ hr {
     transition: all 0.3s ease-in-out;
 }
 
-.display .player-info button.save {
+.player-info button.save {
     padding: 1rem;
     font-size: 1.5rem;
     border-radius: 2.5rem;
 }
 
-.display .player-info button:hover {
+.player-info button:hover {
     color: var(--highlight-color);
     background-color: #fff;
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
 
-.display .player-info p {
+.player-info p {
     color: #fff;
     text-align: center;
     font-size: 1rem;
@@ -355,6 +364,21 @@ footer {
 
 @keyframes menuOpen {
     0% {
+        transform: translate(0, -50%) scale(1, 0);
+    }
+    100% {
+        transform: translate(0, 0) scale(1, 1);
+    }
+}
+
+@keyframes close {
+    0% {
+        transform: translate(0, 0) scale(1, 1);
+    }
+    33% {
+        transform: translate(0, -50%) scale(1, 0);
+    }
+    66% {
         transform: translate(0, -50%) scale(1, 0);
     }
     100% {
