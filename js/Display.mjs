@@ -94,8 +94,10 @@ export async function displaySinglePlayer(parentElement, name) {
         removeAllAlerts();
         removeParams();
         alertMessage("Username not found");
+        setTimeout(()=>{
+            parentElement.querySelector(".player-info").classList.remove("close");
+        }, 2700);
     }
-    parentElement.querySelector(".player-info").classList.remove("close");
 }
 
 // Adds mutiple players' info on page
